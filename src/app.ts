@@ -110,7 +110,17 @@ app.post('/characters', (req: Request, res: Response) => {
 // PUT update character
 
 // DELETE character
-
+app.delete('/characters/:id', function (req, res) {
+    var id = parseInt(req.params.id);
+    var characterIndex = characters.findIndex(function (char) { return char.id === id; });
+    if (characterIndex === -1) {
+        return res.status(404).json({ message: "Character not found" });
+    }
+    characters = characters.filter(function (char) { return char.id !== id; });
+    res.json({
+        message: "Character deleted successfully"
+    });
+});
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
