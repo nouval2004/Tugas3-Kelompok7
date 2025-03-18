@@ -108,6 +108,28 @@ app.post('/characters', (req: Request, res: Response) => {
 });
 
 // PUT update character
+app.put('/characters/:id', (req: Request<{id: string}>, res: Response) => {
+    const id = parseInt(req.params.id);
+    const { name, anime, power } = req.body;
+    
+    const characterIndex = characters.findIndex(char => char.id === id);
+    
+    if (characterIndex === -1) {
+        return res.status(404).json({ message: "Character not found" });
+    }
+    
+    characters[characterIndex] = {
+        ...characters[characterIndex],
+        name: name || characters[characterIndex].name,
+        anime: anime || characters[characterIndex].anime,
+        power: power || characters[characterIndex].power
+    };
+    
+    res.json({
+        message: "Character updated successfully",
+        data: characters[characterIndex]
+    });
+});
 
 // DELETE character
 app.delete('/characters/:id', function (req, res) {
