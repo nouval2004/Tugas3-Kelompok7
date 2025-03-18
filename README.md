@@ -185,7 +185,7 @@ Pastikan server sudah berjalan sebelum melakukan pengujian.
 ## 👥 Kontributor
 - muhammad nouval rifqi
 - azri harniza
-- tiara andini
+- tiara agustin
 
 ## 📄 Lisensi
 [Tipe Lisensi] - lihat LICENSE.md untuk detail lebih lanjut.
